@@ -26,6 +26,12 @@ new RandExp(/random stuff: .+/).gen();
 new RandExp(/xxx xtreme dragon warrior xxx/i).gen();
 // => xxx xtReME dRAGON warRiOR xXX
 
+// try to match an existing string
+new RandExp(/a(b|c)d/i).gen("abd");
+// => abd
+new RandExp(/a(b|c)d/i).gen("acd");
+// => acd
+
 // dynamic regexp shortcut
 new RandExp('(sun|mon|tue|wednes|thurs|fri|satur)day', 'i');
 // is the same as
