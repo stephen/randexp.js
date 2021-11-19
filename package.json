@@ -1,5 +1,5 @@
 {
-  "name": "randexp",
+  "name": "@stephen/randexp",
   "description": "Create random strings that match a given regular expression.",
   "keywords": [
     "regex",
