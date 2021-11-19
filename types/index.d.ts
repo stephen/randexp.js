@@ -10,6 +10,7 @@ declare class RandExp {
     defaultRange: DRange;
     randInt: (from: number, to: number) => number;
     max: number;
+    lastChoices: number[];
 }
 
 export = RandExp;
