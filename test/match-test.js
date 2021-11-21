@@ -143,4 +143,22 @@ describe('Match input', () => {
     assert.deepEqual(lastChoices, [0]);
     assert.equal(gen(/^a(b|c)$/, undefined, lastChoices), 'ab');
   });
+
+  it('Should match nested', () => {
+    assert.equal(gen(/^a((b|c)|(d|e))$/, 'ab'), 'ab');
+    assert.deepEqual(lastChoices, [0, 0]);
+    assert.equal(gen(/^a((b|c)|(d|e))$/, undefined, lastChoices), 'ab');
+
+    assert.equal(gen(/^a((b|c)|(d|e))$/, 'ac'), 'ac');
+    assert.deepEqual(lastChoices, [0, 1]);
+    assert.equal(gen(/^a((b|c)|(d|e))$/, undefined, lastChoices), 'ac');
+
+    assert.equal(gen(/^a((b|c)|(d|e))$/, 'ad'), 'ad');
+    assert.deepEqual(lastChoices, [1, 0]);
+    assert.equal(gen(/^a((b|c)|(d|e))$/, undefined, lastChoices), 'ad');
+
+    assert.equal(gen(/^a((b|c)|(d|e))$/, 'ae'), 'ae');
+    assert.deepEqual(lastChoices, [1, 1]);
+    assert.equal(gen(/^a((b|c)|(d|e))$/, undefined, lastChoices), 'ae');
+  });
 });
